@@ -43,7 +43,7 @@ def power(num1, num2):
 # Python 3 program to print GP.  geometric Progression
 #You cant use the inbuilt python function. Write your own function
 def printGP(a, r, n):
-	if(type(a)==int or type(a)==float) and (type(r)==int or type(r)==float)and (type(n)==int or type(n)==float):
+	if(type(a)==int or type(a)==float) and (type(r)==int or type(r)==float)and (type(n)==int or type(n)==float) and n>=0:
 		if (abs(a)>((1<<31)-1)) or (abs(r)>((1<<31)-1)) or (abs(n)>((1<<31)-1)):
 			return 0
 		gp = []
@@ -61,12 +61,30 @@ def printGP(a, r, n):
 # Python 3 program to print AP.  arithmetic Progression
 #You cant use the inbuilt python function. Write your own function
 def printAP(a, d, n):
-	ap=[]
-	return ap
+	if(type(a)==int or type(a)==float) and (type(d)==int or type(d)==float)and (type(n)==int or type(n)==float) and n>=0:
+		if (abs(a)>((1<<31)-1)) or (abs(d)>((1<<31)-1)) or (abs(n)>((1<<31)-1)):
+			return 0	
+		ap=[]
+		n = int(n)
+		if n==0:
+			return ap
+		if n>0:
+			ap.append(a)
+			for i in range(1,n):
+				ap.append(round(ap[-1]+d,3))
+			return ap
+	else:
+		return 0
+
 
 # Python 3 program to print HP.   Harmonic Progression
 #You cant use the inbuilt python function. Write your own function
-def printHP(a, d, n): 
+def printHP(a, d, n):
+	# if(type(a)==int or type(a)==float) and (type(d)==int or type(d)==float)and (type(n)==int or type(n)==float) and n>=0:
+	# 	if (abs(a)>((1<<31)-1)) or (abs(d)>((1<<31)-1)) or (abs(n)>((1<<31)-1)):
+	# 		return 0 
 	hp=[]
+	n = int(n)
+	if n==0:
 	return hp
 
