@@ -1,6 +1,6 @@
 import tutorial01 as A1
 
-actual_answers = [27, 0, -0.037, [2,8,32,128],[],[2,1,0.500,0.250],0,[2,6,18],0,0]
+actual_answers = [27, 0, -0.037, [2,8,32,128],[],[2,1,0.500,0.250],0,[2,6,18],0,0,[0.200, 0.250, 0.333, 0.5, 1,0],0]
 student_answers = []
 
 # test_case_1 = A1.add(4, 5)
@@ -44,6 +44,12 @@ student_answers.append(test_case_9)
 
 test_case_10 = A1.printGP(2,3,-3)
 student_answers.append(test_case_10)
+
+test_case_10 = A1.printHP(0.2,-1,6)
+student_answers.append(test_case_10)
+
+test_case_11 = A1.printHP(0,-1,6)
+student_answers.append(test_case_11)
 
 print(actual_answers)
 print(student_answers)
