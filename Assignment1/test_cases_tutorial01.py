@@ -45,7 +45,7 @@ student_answers.append(test_case_9)
 test_case_10 = A1.printGP(2,3,-3)
 student_answers.append(test_case_10)
 
-test_case_10 = A1.printHP(0.2,-1,6)
+test_case_10 = A1.printHP(5,-1,6)
 student_answers.append(test_case_10)
 
 test_case_11 = A1.printHP(0,-1,6)

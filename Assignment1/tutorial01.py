@@ -88,10 +88,10 @@ def printHP(a, d, n):
 		if n==0:
 			return hp
 		if n>0:
-			hp.append(a)
+			hp.append(1/a)
 			for i in range(2,n+1):
-				x = (1/a) + (i-1)*d
-				print(x)
+				x = a + (i-1)*d
+				# print(x)
 				if x!=0:
 					hp.append(round(1/x,3)) 
 				else:
