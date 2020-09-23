@@ -1,7 +1,7 @@
 import tutorial02 as A2
 
-actual_answers = [0.56, 0.64,  0.30, .09, 0.47]
-#  -0.38, 1.99, 1*, 0.22, 0.40, -1.47, 0.05, 0, 0, 0]
+actual_answers = [0.56, 0.64,  0.30, .09]
+#  -0.38, 1.99, 0.47, 0.22, 0.40, -1.47, 0.05, 0, 0, 0]
 student_answers = []
 
 import numpy as np
@@ -13,8 +13,8 @@ y = list(y)
 test_case_1 = A2.mean(x)
 student_answers.append(test_case_1)
 
-# test_case_2 = A2.median(x)
-# student_answers.append(test_case_2)
+test_case_2 = A2.median(x)
+student_answers.append(test_case_2)
 
 # test_case_3 = A2.standard_deviation(x)
 # student_answers.append(test_case_3)

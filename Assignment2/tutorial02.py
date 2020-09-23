@@ -28,7 +28,16 @@ def sort_list(first_list):
 
 # Function to compute median. You cant use Python functions
 def median(first_list):
-    return median_value
+    if(check_list(first_list)):
+        sort_list(first_list)
+        n= len(first_list)
+        if n%2==0:
+            median_value = first_list[n/2-1]+first_list[n/2]
+        else:
+            median_value = first_list[n//2]
+            return median_value
+    else:
+        return 0
 
 
 # Function to compute Standard deviation. You cant use Python functions
