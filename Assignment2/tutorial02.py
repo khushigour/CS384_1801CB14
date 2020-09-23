@@ -15,43 +15,22 @@ def mean(first_list):
         for x in first_list:
             sum += x
         mean_value = sum/len(first_list)
-        return round(mean_value,2)
+        return mean_value
     else:
         return 0
 
-def sort_list(first_list): 
-    n = len(first_list)  
-    for i in range(n-1):  
-        for j in range(0, n-i-1): 
-            if first_list[j] > first_list[j+1] : 
-                first_list[j], first_list[j+1] = first_list[j+1], first_list[j] 
+# def sort_list(first_list): 
+     
 
 # Function to compute median. You cant use Python functions
 def median(first_list):
-    if(check_list(first_list)):
-        sort_list(first_list)
-        n= len(first_list)
-        if n%2==0:
-            median_value = first_list[n/2-1]+first_list[n/2]
-        else:
-            median_value = first_list[n//2]
-            return median_value
-    else:
-        return 0
+    return median_value
+
 
 
 # Function to compute Standard deviation. You cant use Python functions
 def standard_deviation(first_list):
-    if(check_list(first_list)):
-        n = len(first_list)
-        m1 = mean(first_list)
-        sum = 0
-        for x in first_list:
-            sum += (x-m1)*(x-m1)
-        standard_deviation_value = math.sqrt(sum/n)
-        return standard_deviation_value
-    else:
-        return 0
+    return standard_deviation_value
 
 
 # Function to compute variance. You cant use Python functions
@@ -67,45 +46,40 @@ def rmse(first_list, second_list):
 
 # Function to compute mse. You cant use Python functions
 def mse(first_list, second_list):
-    # mse Logic
     return mse_value
 
 
 # Function to compute mae. You cant use Python functions
 def mae(first_list, second_list):
-    # mae Logic
     return mae_value
 
 
 # Function to compute NSE. You cant use Python functions
 def nse(first_list, second_list):
-    # nse Logic
     return nse_value
-
 
 # Function to compute Pearson correlation coefficient. You cant use Python functions
 def pcc(first_list, second_list):
-    # nse Logic
     return pcc_value
 
 
 # Function to compute Skewness. You cant use Python functions
 def skewness(first_list):
-    # Skewness Logic
     return skewness_value
+
     
-def sorting(first_list):
-    # Sorting Logic
-    return sorted_list
+# def sorting(first_list):
+#     # Sorting Logic
+#     return sorted_list
 
 
 # Function to compute Kurtosis. You cant use Python functions
 def kurtosis(first_list):
-    # Kurtosis Logic
     return kurtosis_value
+     
 
 
 # Function to compute sum. You cant use Python functions
 def summation(first_list):
-    # sum Logic
     return summation_value
+        
