@@ -59,7 +59,11 @@ def standard_deviation(first_list):
 
 # Function to compute variance. You cant use Python functions
 def variance(first_list):
-    return variance_value
+    if(check_list(first_list)):
+        variance_value = standard_deviation(first_list)**2
+        return variance_value
+    else:
+        return 0
 
 
 
