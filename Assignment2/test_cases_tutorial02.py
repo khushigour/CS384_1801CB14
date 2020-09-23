@@ -13,14 +13,14 @@ y = list(y)
 test_case_1 = A2.mean(x)
 student_answers.append(test_case_1)
 
-test_case_2 = A2.median(x)
-student_answers.append(test_case_2)
+# test_case_2 = A2.median(x)
+# student_answers.append(test_case_2)
 
-test_case_3 = A2.standard_deviation(x)
-student_answers.append(test_case_3)
+# test_case_3 = A2.standard_deviation(x)
+# student_answers.append(test_case_3)
 
-test_case_4 = A2.variance(x)
-student_answers.append(test_case_4)
+# test_case_4 = A2.variance(x)
+# student_answers.append(test_case_4)
 
 # test_case_5 = A2.skewness(x)
 # student_answers.append(test_case_5)
@@ -28,8 +28,8 @@ student_answers.append(test_case_4)
 # test_case_6 = A2.kurtosis(x)
 # student_answers.append(test_case_6)
 
-test_case_7 = A2.rmse(x, y)
-student_answers.append(test_case_7)
+# test_case_7 = A2.rmse(x, y)
+# student_answers.append(test_case_7)
 
 # test_case_8 = A2.mse(x, y)
 # student_answers.append(test_case_8)
@@ -63,7 +63,7 @@ total_test_cases = len(actual_answers)
 count_of_correct_test_cases = 0
 
 for x, y in zip(actual_answers, student_answers):
-    if x == y:
+    if x == round(y,2):
         count_of_correct_test_cases += 1
 
 print(f"Test Cases Passed = '{count_of_correct_test_cases}'  / '{total_test_cases}'")

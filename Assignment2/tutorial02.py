@@ -23,22 +23,23 @@ def mean(first_list):
 
 # Function to compute median. You cant use Python functions
 def median(first_list):
-
+    return median_value
 
 
 # Function to compute Standard deviation. You cant use Python functions
 def standard_deviation(first_list):
-
+    return standard_deviation_value
 
 
 # Function to compute variance. You cant use Python functions
 def variance(first_list):
+    return variance_value
 
 
 
 # Function to compute RMSE. You cant use Python functions
 def rmse(first_list, second_list):
-
+    return rmse_value
 
 
 # Function to compute mse. You cant use Python functions
