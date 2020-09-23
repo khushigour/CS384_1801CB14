@@ -173,5 +173,11 @@ def kurtosis(first_list):
 
 # Function to compute sum. You cant use Python functions
 def summation(first_list):
-    return summation_value
+    if(check_list(first_list)):
+        summation_value = 0
+        for x in first_list:
+            summation_value += x
+        return summation_value
+    else:
+        return 0
         
