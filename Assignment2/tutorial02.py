@@ -95,7 +95,15 @@ def mse(first_list, second_list):
 
 # Function to compute mae. You cant use Python functions
 def mae(first_list, second_list):
-    return mae_value
+    if(check_list(first_list) and check_list(second_list) and len(first_list)==len(second_list)):
+        sum = 0
+        n = len(first_list)
+        for (x,y) in zip(first_list, second_list):
+            sum += abs(x-y)
+        mae_value = sum/n
+        return mae_value
+    else:
+        return 0
 
 
 # Function to compute NSE. You cant use Python functions
