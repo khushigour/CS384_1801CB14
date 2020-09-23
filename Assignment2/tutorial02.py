@@ -114,7 +114,18 @@ def skewness(first_list):
 
 # Function to compute Kurtosis. You cant use Python functions
 def kurtosis(first_list):
-    return kurtosis_value
+    if(check_list(first_list)):
+        n = len(first_list)
+        m1 = mean(first_list)
+        sigma = standard_deviation(first_list)
+        sum = 0
+        for x in first_list:
+            y = (x-m1)/sigma
+            sum += y*y*y*y
+        kurtosis_value = sum/n
+        return kurtosis_value
+    else:
+        return 0
      
 
 
