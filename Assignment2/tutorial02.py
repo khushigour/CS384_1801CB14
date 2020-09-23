@@ -82,7 +82,15 @@ def rmse(first_list, second_list):
 
 # Function to compute mse. You cant use Python functions
 def mse(first_list, second_list):
-    return mse_value
+    if(check_list(first_list) and check_list(second_list) and (len(first_list)==len(second_list))):
+        sum = 0
+        n = len(first_list)
+        for (x,y) in zip(first_list,second_list):
+            sum += (x-y)**2
+        mse_value = sum/n
+        return mse_value
+    else: 
+        return 0
 
 
 # Function to compute mae. You cant use Python functions
