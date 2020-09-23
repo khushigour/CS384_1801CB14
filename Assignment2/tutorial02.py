@@ -19,7 +19,12 @@ def mean(first_list):
     else:
         return 0
 
-
+def sort_list(first_list): 
+    n = len(first_list)  
+    for i in range(n-1):  
+        for j in range(0, n-i-1): 
+            if first_list[j] > first_list[j+1] : 
+                first_list[j], first_list[j+1] = first_list[j+1], first_list[j] 
 
 # Function to compute median. You cant use Python functions
 def median(first_list):
