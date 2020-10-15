@@ -212,7 +212,25 @@ def dob():
 
 
 def state():
-    
+    f1 = open('studentinfo_cs384.csv','r')
+    reader = csv.reader(f1)
+    path = os.path.join(os.getcwd(),r'analytics/state')
+    os.mkdir(path)
+    for row in reader:
+        x = re.compile(r'^[a-zA-Z ]*$')
+        if row[7]!='state'and re.match(x, row[7]):
+            path1 = path+'/'+ row[7]+'.csv'
+            if not os.path.exists(path1):
+                with open(path1, 'a+', newline='') as f:
+                    thewriter =csv.writer(f)
+                    thewriter.writerow(keys_1)
+            with open(path1, 'a+', newline='') as f:
+                thewriter =csv.writer(f)
+                thewriter.writerow(row)
+        elif row[7]!='state':
+            with open(path + '/misc.csv','a+',newline='')as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row)     
     pass
 
 
