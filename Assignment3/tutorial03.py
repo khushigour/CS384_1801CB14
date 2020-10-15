@@ -128,7 +128,26 @@ def email_domain_extract():
 
 
 def gender():
-
+    f1 = open('studentinfo_cs384.csv','r')
+    reader = csv.reader(f1)
+    path = os.path.join(os.getcwd(),r'analytics/gender')
+    os.mkdir(path)
+    for row in reader:
+        x = re.compile(r'^Female|Male$')
+        if re.match(x,row[4]):
+            path1 = path +'/' + row[4].lower() + '.csv'
+            if not os.path.exists(path1):
+                with open(path1, 'a+', newline='') as f:
+                    thewriter =csv.writer(f)
+                    thewriter.writerow(keys_1)
+            with open(path1, 'a+', newline='') as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row) 
+        elif row[4]!= 'gender':
+            with open(path + '/misc.csv','a+',newline='')as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row)
+    pass
     pass
 
 
