@@ -20,7 +20,59 @@ def del_create_analytics_folder():
 
 
 def course():
-        
+    f1 = open('studentinfo_cs384.csv','r')
+    reader = csv.reader(f1)
+    path = os.path.join(os.getcwd(),r'analytics/course')
+    os.mkdir(path)
+    for row in reader:
+        x = re.compile(r'^[0-9]{2}[012]{2}[A-Z]{2}[0-9]{2}$')
+        if re.match(x, row[0]):
+            y = row[0][4:6]
+            y = y.lower()
+            p = os.path.join(path,y)
+            z = row[0][2:4]
+            if z=='01':
+                z = "btech"
+            if z=='11':
+                z = "mtech"
+            if z=='12':
+                z ="msc"
+            if z=='21':
+                z ="phd"
+            q = os.path.join(p,z)
+            a = row[0][0:2]+'_'+y+'_'+z+'.csv'
+            r = os.path.join(q,a)
+            if os.path.exists(p):
+                if os.path.exists(q):
+                    if not os.path.exists(r):
+                        with open(r, 'a+', newline='') as f:
+                            thewriter =csv.writer(f)
+                            thewriter.writerow(keys_1) 
+                    with open(r,'a+',newline='') as f:
+                        thewriter = csv.writer(f) 
+                        thewriter.writerow(row)
+                else:
+                    os.mkdir(q)
+                    if not os.path.exists(r):
+                        with open(r, 'a+', newline='') as f:
+                            thewriter =csv.writer(f)
+                            thewriter.writerow(keys_1)
+                    with open(r,'a+',newline='') as f:
+                        thewriter = csv.writer(f) 
+                        thewriter.writerow(row)                    
+            else:
+                os.makedirs(q)
+                if not os.path.exists(r):
+                    with open(r, 'a+', newline='') as f:
+                        thewriter =csv.writer(f)
+                        thewriter.writerow(keys_1)
+                with open(r,'a+',newline='') as f:
+                    thewriter = csv.writer(f) 
+                    thewriter.writerow(row)
+        elif row[0]!='course':
+            with open(os.path.join(path,'misc.csv'),'a+',newline='')as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row)        
     pass
 
 
