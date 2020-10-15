@@ -77,7 +77,25 @@ def course():
 
 
 def country():
-         
+    f1 = open('studentinfo_cs384.csv','r')
+    reader = csv.reader(f1) 
+    path = os.path.join(os.getcwd(),r'analytics/country')
+    os.mkdir(path)
+    for row in reader:
+        x = re.compile(r'^[a-zA-Z ]*$')
+        if row[2]!='country':
+            path1 = path+ '/' + row[2]+'.csv'
+            if not os.path.exists(path1):
+                with open(path1, 'a+', newline='') as f:
+                    thewriter =csv.writer(f)
+                    thewriter.writerow(keys_1)
+            with open(path1, 'a+', newline='') as f:
+                thewriter =csv.writer(f)
+                thewriter.writerow(row)
+        elif row[2]!='country':
+            with open(path + '/misc.csv','a+',newline='')as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row)                    
     pass
 
 
