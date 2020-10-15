@@ -280,13 +280,13 @@ def new_file_sort():
             with open(path + '/studentinfo_cs384_names_split.csv','a+',newline='') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow(row1)
-    sortedlist = sorted(sortedlist, key=lambda row: row[1])
-    for rowx in sortedlist:
-        if not os.path.exists(path + '/studentinfo_cs384_names_split_sorted_first_name.csv'):
-            with open(path+ '/studentinfo_cs384_names_split_sorted_first_name.csv','a+',newline='') as f:
-                thewriter = csv.writer(f)
-                thewriter.writerow(keys_2)
-        with open(path + '/studentinfo_cs384_names_split_sorted_first_name.csv','a+',newline='') as f:
-            writerx = csv.writer(f)
-            writerx.writerow(rowx)
+    # sortedlist = sorted(sortedlist, key=lambda row: row[1])
+    # for rowx in sortedlist:
+    #     if not os.path.exists(path + '/studentinfo_cs384_names_split_sorted_first_name.csv'):
+    #         with open(path+ '/studentinfo_cs384_names_split_sorted_first_name.csv','a+',newline='') as f:
+    #             thewriter = csv.writer(f)
+    #             thewriter.writerow(keys_2)
+    #     with open(path + '/studentinfo_cs384_names_split_sorted_first_name.csv','a+',newline='') as f:
+    #         writerx = csv.writer(f)
+    #         writerx.writerow(rowx)
     pass
