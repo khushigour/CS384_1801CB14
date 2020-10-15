@@ -235,7 +235,26 @@ def state():
 
 
 def blood_group():
-  
+    f1 = open('studentinfo_cs384.csv','r')
+    reader = csv.reader(f1)
+    path = os.path.join(os.getcwd(),r'analytics/blood_group')
+    os.mkdir(path)
+    for row in reader:
+        x = re.compile(r'^AB\+|AB-|A\+|A-|B\+|B-|O\+|O-$')
+        if re.match(x, row[6]):
+            path1 = path+ '/' + row[6].lower()+'.csv'
+            if not os.path.exists(path1):
+                with open(path1, 'a+', newline='') as f:
+                    thewriter =csv.writer(f)
+                    thewriter.writerow(keys_1)
+            with open(path1, 'a+', newline='') as f:
+                thewriter =csv.writer(f)
+                thewriter.writerow(row)
+        elif row[6]!='blood_group':
+            with open(path + '/misc.csv','a+',newline='')as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row)  
+
     pass
 
 
