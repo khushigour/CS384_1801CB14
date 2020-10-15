@@ -100,7 +100,30 @@ def country():
 
 
 def email_domain_extract():
-
+    f1 = open('studentinfo_cs384.csv','r')
+    reader = csv.reader(f1)
+    path = os.path.join(os.getcwd(),r'analytics/email_domain')
+    os.mkdir(path)
+    for row in reader:
+        x = re.compile(r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,10}$')
+        if re.match(x,row[3]):
+            y = row[3].index('@')+1
+            s=''
+            while(row[3][y]!='.'):
+                s += row[3][y]
+                y+=1
+            path1= path  +'/' + s +'.csv'
+            if not os.path.exists(path1):
+                with open(path1, 'a+', newline='') as f:
+                    thewriter =csv.writer(f)
+                    thewriter.writerow(keys_1)
+            with open(path1, 'a+', newline='') as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row)
+        else:
+            with open(path + '/misc.csv','a+',newline='')as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row)
     pass
 
 
