@@ -260,5 +260,33 @@ def blood_group():
 
 # Create the new file here and also sort it in this function only.
 def new_file_sort():
-
+    f1 = open('studentinfo_cs384.csv','r')
+    reader = csv.reader(f1)
+    path = os.path.join(os.getcwd(),'analytics')
+    sortedlist = []
+    for row in reader:
+        if row[1]!='full_name':
+            member = row[1].split(' ',1)
+            row1 = [row[0],member[0]]
+            if len(member)==2:
+                row1.append(member[1])
+            for i in range(2,8):
+                row1.append(row[i])
+            sortedlist.append(row1)
+            if not os.path.exists(path + '/studentinfo_cs384_names_split.csv'):
+                with open(path +'/studentinfo_cs384_names_split.csv','a+',newline='') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow(keys_2)
+            with open(path + '/studentinfo_cs384_names_split.csv','a+',newline='') as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row1)
+    sortedlist = sorted(sortedlist, key=lambda row: row[1])
+    for rowx in sortedlist:
+        if not os.path.exists(path + '/studentinfo_cs384_names_split_sorted_first_name.csv'):
+            with open(path+ '/studentinfo_cs384_names_split_sorted_first_name.csv','a+',newline='') as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(keys_2)
+        with open(path + '/studentinfo_cs384_names_split_sorted_first_name.csv','a+',newline='') as f:
+            writerx = csv.writer(f)
+            writerx.writerow(rowx)
     pass
