@@ -148,11 +148,66 @@ def gender():
                 thewriter = csv.writer(f)
                 thewriter.writerow(row)
     pass
-    pass
 
 
 def dob():
-
+    f1 = open('studentinfo_cs384.csv','r')
+    reader = csv.reader(f1)
+    path = os.path.join(os.getcwd(),r'analytics/dob')
+    os.mkdir(path)
+    for row in reader:
+        x = re.compile(r'^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}$')
+        if re.match(x, row[5]):
+            y = int(row[5][-4:])
+            if y>=1995 and y<=1999:
+                path1 = path + '/bday_1995_1999.csv'
+                if not os.path.exists(path1):
+                    with open(path1, 'a+', newline='') as f:
+                        thewriter =csv.writer(f)
+                        thewriter.writerow(keys_1)
+                with open(path1, 'a+', newline='') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow(row)                
+            if y>=2000 and y<=2004:
+                path2 = path + '/bday_2000_2004.csv'
+                if not os.path.exists(path2):
+                    with open(path2, 'a+', newline='') as f:
+                        thewriter =csv.writer(f)
+                        thewriter.writerow(keys_1)
+                with open(path2, 'a+', newline='') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow(row) 
+            if y>=2005 and y<=2009:
+                path3 = path + '/bday_2005_2009.csv'
+                if not os.path.exists(path3):
+                    with open(path3, 'a+', newline='') as f:
+                        thewriter =csv.writer(f)
+                        thewriter.writerow(keys_1)
+                with open(path3, 'a+', newline='') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow(row) 
+            if y>=2010 and y<=2014:
+                path4 = path + '/bday_2010_2014.csv'
+                if not os.path.exists(path4):
+                    with open(path4, 'a+', newline='') as f:
+                        thewriter =csv.writer(f)
+                        thewriter.writerow(keys_1)
+                with open(path4, 'a+', newline='') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow(row) 
+            if y>=2015 and y<=2020:
+                path5 = path + '/bday_2015_2020.csv'
+                if not os.path.exists(path5):
+                    with open(path5, 'a+', newline='') as f:
+                        thewriter =csv.writer(f)
+                        thewriter.writerow(keys_1)
+                with open(path5, 'a+', newline='') as f:
+                    thewriter = csv.writer(f)
+                    thewriter.writerow(row) 
+        elif row[5]!='dob':
+            with open(path + '/misc.csv', 'a+', newline='') as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow(row) 
     pass
 
 
