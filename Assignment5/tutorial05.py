@@ -113,11 +113,38 @@ def rename_Suits(folder_name):
     
 
 def rename_How_I_Met_Your_Mother(folder_name):
-    pass
+    x = os.getcwd()
+    path = os.path.join(os.getcwd(),'Subtitles/' + folder_name)
+    os.chdir(path)
+    pattern1 = re.compile(r'([0-9]*)x([0-9]*)')
+    pattern3 = re.compile(r'(mp4|srt)')
+    padding_s = int(input('Padding for Season for How I Met Your Mother: '))
+    padding_ep = int(input('Padding for Episode for How I Met Your Mother: '))
+    for file in os.listdir(path):
+        season_ep = pattern1.search(file)
+        season_no = season_ep.group(1)
+        if padding_s< len(str(season_no)):
+            padding_s = len(str(season_no))
+        ep_no = int(season_ep.group(2))
+        if padding_ep<len(str(ep_no)):
+            padding_ep = len(str(ep_no))
+        a = re.split('\.HDTV|\.FoV|\.720p|\.1080p|\.en', str(file))
+        y = re.split(' - ', a[0])
+        ep_name = y[-1]
+        end = pattern3.search(file)
+        if ep_name !='':
+            initial_path = os.path.join(path,file)
+            new_name = 'How I Met Your Mother'+ ' - Season ' + ((padding_s)-len(str(season_no)))*'0' + str(season_no) + ' Episode ' +((padding_ep) - len(str(ep_no)))*'0' + str(ep_no)  + ' - ' + ep_name + '.'+ end.group()
+            final_path = os.path.join(path,new_name)
+            os.rename(initial_path, new_name)
+        else:
+            continue
+    os.chdir(x)
 
     
 
 # rename_FIR('FIR')
 # rename_Game_of_Thrones('Game of Thrones')
 # rename_Sherlock('Sherlock')
-rename_Suits('Suits')
+# rename_Suits('Suits')
+rename_How_I_Met_Your_Mother('How I Met Your Mother')
