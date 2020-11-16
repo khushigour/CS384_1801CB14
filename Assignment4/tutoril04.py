@@ -15,6 +15,7 @@ def del_create_analytics_folder():
     pass
 
 def student_res():
+    # For making individual csv files
     res_df = pd.read_csv('acad_res_stud_grades.csv')
     with open('acad_res_stud_grades.csv') as file1:
         reader = csv.DictReader(file1)
@@ -58,6 +59,56 @@ def student_res():
                         writer.writeheader()
                         # f=0
                     writer.writerow(entries)
+
+    # For making overall csv files                
+    path = os.path.join(os.getcwd(),'grades')
+    for file in os.listdir(path):
+        if '_individual.csv' not in file:
+            continue
+        one_roll = ''
+        for i in file:
+            if i == '_':
+                break
+            one_roll+= i
+        # print(one_roll)
+        f_path = os.path.join(path, file)
+        df = pd.read_csv(f_path, skiprows = 2)
+        Grades = {'AA':10, 'AB':9, 'BB':8, 'BC':7, 'CC':6, 'CD':5, 'DD':4, 'I':0, 'F':0}
+        df_new = df.replace({'Grade': Grades})
+        # print(df_new)
+        List_sem = []
+        List_sem_credits = []
+        List_SPI = []
+        max_sem = df['Sem'].max()
+        for i in range(1, max_sem+1):
+            List_sem.append(i)
+            if i in df['Sem']:
+                Sem_credits = df.loc[df['Sem'] == i, 'Credits'].sum()
+            else:
+                Sem_credits = 0
+            List_sem_credits.append(Sem_credits)
+            SPI = (df_new.loc[df_new['Sem']==i,'Grade']*df_new.loc[df_new['Sem']==i,'Credits']).sum()
+            if Sem_credits!=0:
+                SPI = round(SPI/Sem_credits,2)
+            else:
+                SPI = 0
+            List_SPI.append(SPI)
+        dict = {'Semester': List_sem, 'Semester Credits': List_sem_credits, 'Semester Credits Cleared': List_sem_credits, 'SPI': List_SPI}  
+        df_overall = pd.DataFrame(dict)
+        df_overall.reset_index(drop=True, inplace = True)
+        df_overall['Total Credits'] = df_overall['Semester Credits'].cumsum(axis = 0)
+        df_overall['Total Credits Cleared'] = df_overall['Semester Credits Cleared'].cumsum(axis=0)
+        df_overall['CPI'] =round((df_overall['SPI']*df_overall['Semester Credits Cleared']).cumsum(axis=0)/df_overall['Total Credits Cleared'],2)
+        # print(df_overall)
+        
+        f1_path = os.path.join(path, one_roll + '_overall.csv')
+        field_name = ['Semester','Semester Credits', 'Semester Credits Cleared', 'SPI', 'Total Credits', 'Total Credits Cleared','CPI' ]
+        with open(f1_path, 'a+', newline = '') as file:
+            start1 = {'Semester':'Roll: ' + one_roll,'Semester Credits':None, 'Semester Credits Cleared': None, 'SPI': None, 'Total Credits': None, 'Total Credits Cleared': None,'CPI':None }
+            writer = csv.DictWriter(file, fieldnames = field_name)
+            writer.writerow(start1)
+            writer.writeheader()
+        df_overall.to_csv(f1_path, mode = 'a', header = False, index = False)
 
 del_create_analytics_folder()
 student_res()
