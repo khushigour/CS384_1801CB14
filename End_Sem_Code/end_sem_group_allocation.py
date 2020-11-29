@@ -36,6 +36,35 @@ def group_allocation(filename, number_of_groups):
         Branch_name = i +'.csv'
         path_2 = os.path.join(initial_path,Branch_name)
         df_Branch.to_csv(path_2, header = True, index = False)
+
+    #Part-4 Stat.csv file is creating
+    head_4= []
+    for i in range(1,number_of_groups+1):
+        count_of_o = len(str(number_of_groups))-len(str(i))
+        group_name = 'Group_G'+'0'*count_of_o +str(i) + '.csv'
+        head_4.append(group_name)
+    
+    df_stats = pd.DataFrame(head_4, columns = ['group'])
+    left = 0
+    for i in df_Strength['BRANCH_CODE']:
+        y = int(df_Strength[df_Strength['BRANCH_CODE']==i]['STRENGTH'])
+        x = math.floor(y/number_of_groups)
+        df_stats.loc[:,i] = x
+        z = y - x*number_of_groups
+        for j in df_stats[i]:
+            index = left%number_of_groups
+            df_stats.loc[index , i] = j+1
+            left +=1
+            z-=1
+            if z==0:
+                break
+    
+    col_list= list(df_stats)
+    col_list.remove('group')
+    sum_of_group = list(df_stats[col_list].sum(axis=1))
+    df_stats.insert(1,'total',sum_of_group)
+    path_4 = os.path.join(initial_path,r'stats_grouping.csv')
+    df_stats.to_csv(path_4, header = True, index = False)
     pass
 
 filename = "Btech_2020_master_data.csv"
