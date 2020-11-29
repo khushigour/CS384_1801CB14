@@ -65,6 +65,23 @@ def group_allocation(filename, number_of_groups):
     df_stats.insert(1,'total',sum_of_group)
     path_4 = os.path.join(initial_path,r'stats_grouping.csv')
     df_stats.to_csv(path_4, header = True, index = False)
+
+    #Part-3 Group_GXX files are created
+    initial_val = {}
+    for i in df_Strength['BRANCH_CODE']:
+        initial_val[i] = 0
+
+    for i in df_stats['group']:
+        col_names = ['Roll', 'Name', 'Email']
+        df_final_groups = pd.DataFrame(columns = col_names)
+        for j in df_Strength['BRANCH_CODE']:
+            no_in_group = int(df_stats[df_stats['group']==i][j])
+            df_G = df[df['Branch']==j][initial_val[j]:initial_val[j]+no_in_group]
+            initial_val[j] = initial_val[j]+no_in_group
+            df_final_groups = pd.concat([df_final_groups,df_G],ignore_index=True)
+        df_final_groups = df_final_groups.drop(df_final_groups.columns[-1], axis = 1)
+        path_3 = os.path.join(initial_path,i)
+        df_final_groups.to_csv(path_3, header = True, index = False)
     pass
 
 filename = "Btech_2020_master_data.csv"
