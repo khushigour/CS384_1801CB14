@@ -143,8 +143,8 @@ def rename_How_I_Met_Your_Mother(folder_name):
 
     
 
-# rename_FIR('FIR')
-# rename_Game_of_Thrones('Game of Thrones')
-# rename_Sherlock('Sherlock')
-# rename_Suits('Suits')
+rename_FIR('FIR')
+rename_Game_of_Thrones('Game of Thrones')
+rename_Sherlock('Sherlock')
+rename_Suits('Suits')
 rename_How_I_Met_Your_Mother('How I Met Your Mother')
