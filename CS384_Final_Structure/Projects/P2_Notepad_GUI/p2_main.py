@@ -191,24 +191,40 @@ def find_and_rplace():
 
 
 def wordcount_file():
-	pass
+    word = len(my_text.get(1.0,'end-1c').split())
+    messagebox.showinfo('word count', 'Number of words: ' + str(word))
+
 
 def charcount_file():
-	pass
+    char_value = len(my_text.get(1.0,END).replace("\n","").replace(" ",""))
+    messagebox.showinfo('char count', 'Number of characters: ' + str(char_value))
 
 def created_time_file():
-	pass
+    c_time = os.path.getctime(open_name) 
+    local_time = time.ctime(c_time) 
+    messagebox.showinfo('Created Time', "c-time (Local time):" + str(local_time))
+
 
 def modified_time_file():
-	pass
+    m_time = os.path.getmtime(open_name) 
+    local_time = time.ctime(m_time) 
+    messagebox.showinfo('Modified Time', "m-time (Local time):" + str(local_time))
 
 def bold_it():
-	pass
+    bold_font = font.Font(font = my_text["font"])
+    if bold_font.actual()['weight'] == 'normal':
+        my_text.configure(font=("Arial", 16, "bold"))
+    if bold_font.actual()['weight'] == 'bold':
+        my_text.configure(font=("Arial", 16, 'normal'))
+
 
 
 def italics():
-	pass
-
+    it_font = font.Font(font = my_text["font"])
+    if it_font.actual()['slant'] == 'roman':
+        my_text.configure(font=("Arial", 16, "italic"))
+    if it_font.actual()['slant'] == 'italic':
+        my_text.configure(font=("Arial", 16, 'roman'))
 
 #Create a toolbar frame
 toolbar_frame = Frame(root)
