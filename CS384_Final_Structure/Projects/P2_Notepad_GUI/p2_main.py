@@ -8,20 +8,58 @@ import time
 root = Tk()
 root.title('Notepad Project')
 
+global open_name
+open_name = False
+
+
 def new_file():
-	pass
+    my_text.delete("1.0", END)
+    root.title('New Fie - TextPad!')
+    global open_name
+    open_name = False
+
 
 def open_file():
-	pass
+    my_text.delete("1.0", END)
+    path = os.getcwd()
+    text_file = filedialog.askopenfilename(initialdir = path, filetypes=[("Text Documents","*.txt"), ("HTML Files","*.html"), ("Python Files","*.py"),("All Files","*.*")])
+    if text_file:
+        global open_name
+        open_name = text_file
+    name = text_file
+    name= name.replace(path,"")
+    root.title(f'{name} - TextPad!')
+
+    text_file = open(text_file,'r')
+    stuff = text_file.read()
+    my_text.insert(END,stuff)
+    text_file.close()
+
+
 
 def save_as_file():
-	pass
+    text_file = filedialog.asksaveasfilename(defaultextension = ".txt", initialdir = os.getcwd(), title = "Save File", filetypes = [("Text Files", "*.txt"),("HTML Files","*.html"), ("Python Files","*.py"), ("All Files", "*.*")])
+    if text_file:
+        name = text_file
+        name = name.replace(os.getcwd(),"")
+        root.title(f'{name} -NotePad!')
+
+        text_file = open(text_file,'w')
+        text_file.write(my_text.get(1.0,END))
+        text_file.close()
+
 
 def save_file():
-	pass
+    global open_name
+    if open_name:
+        text_file = open(open_name,'w')
+        text_file.write(my_text.get(1.0, END))
+        text_file.close()
+    else:
+        save_as_file()
 
 def exit():
-	pass
+    root.destroy()
 
 def cut_text(e):
 	pass
