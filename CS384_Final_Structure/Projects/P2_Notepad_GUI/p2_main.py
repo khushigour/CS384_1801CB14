@@ -11,6 +11,9 @@ root.title('Notepad Project')
 global open_name
 open_name = False
 
+global selected
+selected= False
+
 
 def new_file():
     my_text.delete("1.0", END)
@@ -62,19 +65,130 @@ def exit():
     root.destroy()
 
 def cut_text(e):
-	pass
+    global selected
+    #check if we use keyboard shortcut
+    if e:
+        selected = root.clipboard_get()
+    else:
+        if my_text.selection_get():
+            selected = my_text.selection_get()
+            my_text.delete("sel.first", "sel.last")
+            root.clipboard_clear()
+            root.clipboard_append(selected)
+
+
 
 def copy_text(e):
-	pass
+    global selected
+    if e:
+        selected = root.clipboard_get()
+
+    if my_text.selection_get():
+        selected= my_text.selection_get()
+        root.clipboard_clear()
+        root.clipboard_append(selected)
+
 
 def paste_text(e):
-	pass
+    global selected
+    if e:
+        selected  = root.clipboard_get()
+    else:
+        if selected:
+            position = my_text.index(INSERT)
+            my_text.insert(position, selected)
+
 
 def find_text():
-	pass
+    def find():
+        word = find_input.get()
+        my_text.tag_remove("match", "1.0", END)
+        matches=0
+        if word:
+            start_pos="1.0"
+            while True:
+                start_pos= my_text.search(word, start_pos, stopindex=END)
+                if not start_pos:
+                    break
+                end_pos = f'{start_pos} + {len(word)}c'
+                my_text.tag_add("match", start_pos, end_pos)
+                matches+=1
+                start_pos = end_pos
+                my_text.tag_config('match', foreground = 'red', background = 'yellow')
+
+    find_popup = Toplevel()
+    find_popup.geometry("450x100")
+    find_popup.title("Find Word")
+    find_popup.resizable(0,0)
+
+    find_frame= Frame(find_popup)
+    find_frame.pack(pady=20)
+
+    text_find= Label(find_frame, text="Find")
+    find_input = Entry(find_frame, width=30)
+    find_button= Button(find_frame, text="find", command = find)
+    text_find.grid(row=0, column=0, padx=4, pady=4)
+    find_input.grid(row=0, column=1, padx=4, pady=4)
+    find_button.grid(row=1, column=0, padx=4, pady=4)
+
 
 def find_and_rplace():
-	pass
+    def find():
+        word = find_input.get()
+        my_text.tag_remove("match", "1.0", END)
+        matches=0
+        if word:
+            start_pos="1.0"
+            while True:
+                start_pos= my_text.search(word, start_pos, stopindex=END)
+                if not start_pos:
+                    break
+                end_pos = f'{start_pos} + {len(word)}c'
+                my_text.tag_add("match", start_pos, end_pos)
+                matches+=1
+                start_pos = end_pos
+                my_text.tag_config('match', foreground = 'red', background = 'yellow')
+
+    def replace():
+        word = find_input.get()
+        replace_text = replace_input.get()
+        content = my_text.get(1.0, END)
+        new_content = content.replace(word, replace_text)
+        my_text.delete(1.0, END)
+        my_text.insert(1.0,new_content)
+
+    find_popup = Toplevel()
+    find_popup.geometry("450x150")
+    find_popup.title("Find and Replace Word")
+    find_popup.resizable(0,0)
+
+    find_frame= Frame(find_popup)
+    find_frame.pack(pady=20)
+
+    #Label
+    text_find= Label(find_frame, text="Find")
+    text_replace = Label(find_frame, text= "Replace")
+
+    #entry box
+    find_input = Entry(find_frame, width=30)
+    replace_input = Entry(find_frame, width = 30)
+
+    #button
+    find_button= Button(find_frame, text="find", command = find)
+    replace_button = Button(find_frame, text = "Replace", command = replace)
+
+    #text label grid
+    text_find.grid(row=0, column=0, padx=4, pady=4)
+    text_replace.grid(row=1, column=0, padx=4, pady=4)
+
+    #entry grid
+    find_input.grid(row=0, column=1, padx=4, pady=4)
+    replace_input.grid(row=1, column=1, padx=4, pady=4)
+
+    #button grid
+    find_button.grid(row=2, column=0, padx=4, pady=4)
+    replace_button.grid(row=2, column=1, padx =4, pady=4)
+
 
 def wordcount_file():
 	pass
