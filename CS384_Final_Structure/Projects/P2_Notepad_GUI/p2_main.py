@@ -57,6 +57,11 @@ def bold_it():
 def italics():
 	pass
 
+
+#Create a toolbar frame
+toolbar_frame = Frame(root)
+toolbar_frame.pack(fill=X)
+
 #create the frame
 my_frame = Frame(root)
 my_frame.pack(pady=10)
@@ -102,5 +107,19 @@ stats_menu.add_command(label="Word Count", command = wordcount_file)
 stats_menu.add_command(label="Char Count", command = charcount_file)
 stats_menu.add_command(label="Created Time",command = created_time_file)
 stats_menu.add_command(label="Modified Time", command = modified_time_file)
+
+
+#Create Button
+bold_button = Button(toolbar_frame, text = "Bold", command = bold_it)
+bold_button.grid(row = 0, column = 0, sticky =W, padx=5)
+
+italics_button = Button(toolbar_frame, text = "Italics", command = italics)
+italics_button.grid(row = 0, column = 1, padx=5)
+
+undo_button = Button(toolbar_frame, text = "Undo", command = my_text.edit_undo)
+undo_button.grid(row = 0, column = 2, padx=5)
+
+redo_button = Button(toolbar_frame, text = "Redo", command = my_text.edit_redo)
+redo_button.grid(row = 0, column = 3, padx= 5)
 
 root.mainloop()
