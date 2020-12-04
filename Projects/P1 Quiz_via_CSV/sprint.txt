@@ -1,0 +1,19 @@
+registration - Done
+login - done
+quiz selection - done
+timer - done
+quiz submit - done
+
+ui sprint:
+
+home - done
+login - done
+registration - done
+quiz selection - done
+Take_quiz = done
+
+unanswered questions window - 1
+goto question window - 1
+
+quiz submition - done(minor data storage fix)
+
