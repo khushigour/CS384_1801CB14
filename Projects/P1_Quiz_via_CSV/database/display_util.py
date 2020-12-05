@@ -1,3 +1,4 @@
+
 import database.db as db
 from tkinter import *
 import fileOperations.read as reader
@@ -65,6 +66,7 @@ def login():
     global password
     global username_entry
     global password_entry
+    global err_label
     
     # login_screen = Toplevel(main_screen) 
     main_screen.destroy()

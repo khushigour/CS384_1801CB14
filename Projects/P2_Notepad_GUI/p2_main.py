@@ -1,3 +1,22 @@
+'''
+P2 - Notepad Using Tkinter
+
+course = CS384-Python
+Instructor = Mr. Mayank Agarwal
+
+Group Members:
+1. Aparsh Gupta(1801EE08)
+2. Khushi Gour(1801CB14)
+
+libraries used:
+1.Tkinter
+2. os
+3. time
+
+Demo video - https://youtu.be/S84pW-GVxIE
+'''
+
+
 from tkinter import *
 from tkinter import filedialog
 from tkinter import font

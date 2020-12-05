@@ -1,3 +1,29 @@
+'''
+P1 - Quiz Sysytem
+
+course = CS384-Pyhton
+Instructor = Mr. Mayank Agarwal
+
+Group Members:
+1. Aparsh Gupta(1801EE08)
+2. Khushi Gaur(1801CB14) 
+
+Libraries used:
+1. Bcrypt
+2. Tkinter
+3. Threading
+4. pynput
+5. csv 
+6. os
+7. pathlib
+8. re
+9. shutil
+
+Demo Video - https://www.youtube.com/watch?v=tuq4OBdbygA
+
+'''
+
+
 import database.display_util as display
 import database.db as db
 import utilities.timer as timer
@@ -42,10 +68,10 @@ reader.select_quiz()
 '''
 
 '''
-Enter your username: 1801EE08
-Enter ypur password: password123
-Enter your name: aparsh_gg
-Enter your watsapp number: 7073876622
+Enter your username: 1801zz33
+Enter ypur password: zz33
+Enter your name: xyz
+Enter your watsapp number: 9000000000
 
 '''
 
