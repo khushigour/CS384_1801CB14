@@ -141,10 +141,21 @@ def rename_How_I_Met_Your_Mother(folder_name):
             continue
     os.chdir(x)
 
-    
+x = input('''
+Enter 1 for 'FIR' series
+Enter 2 for 'Game of Thrones' series
+Enter 3 for 'Sherlock' series
+Enter 4 for 'Suits' series
+Enter 5 for 'How I Met Your Mother' series
+''')   
 
-rename_FIR('FIR')
-rename_Game_of_Thrones('Game of Thrones')
-rename_Sherlock('Sherlock')
-rename_Suits('Suits')
-rename_How_I_Met_Your_Mother('How I Met Your Mother')
+if x =='1':
+    rename_FIR('FIR')
+if x =='2':
+    rename_Game_of_Thrones('Game of Thrones')
+if x =='3':
+    rename_Sherlock('Sherlock')
+if x =='4':
+    rename_Suits('Suits')
+if x =='5':
+    rename_How_I_Met_Your_Mother('How I Met Your Mother')
